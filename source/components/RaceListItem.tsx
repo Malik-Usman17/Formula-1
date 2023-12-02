@@ -11,14 +11,18 @@ const RaceListItem = ({ item }: { item: (typeof races)[0] }) => {
     <View style={styles.itemContainer}>
 
       <View style={styles.datesContainer}>
-        <Text>03-05</Text>
+        <Text style={styles.date}>03-05</Text>
         <Text style={styles.month}>NOV</Text>
       </View>
 
       <View style={{ flex: 1 }}>
         <Text style={styles.round}>Round 21</Text>
-        <Text style={styles.country}>{item.competition.location.country}</Text>
-        <Text style={styles.description}>Formula 1 {item.competition.location.country} 2023</Text>
+        <Text style={styles.country}>
+          {item.competition.location.country}
+        </Text>
+        <Text style={styles.description}>
+          Formula 1 {item.competition.location.country} Grand Prix 2023
+        </Text>
       </View>
 
       <Entypo
@@ -55,22 +59,27 @@ datesContainer: {
   borderColor: "gainsboro",
   alignItems: "center"
 },
-date: {},
+date: {
+  fontFamily: "F1-Regular"
+},
 month: {
   backgroundColor: "gainsboro",
   paddingVertical: 3,
   paddingHorizontal: 10,
   overflow: "hidden",
   borderRadius: 10,
+  marginTop: 5,
   color: "dimgray",
   fontWeight: "bold"
 },
 round: {
-  color: colors.primary
+  color: colors.primary,
+  fontFamily: "F1-Regular"
 },
 country: {
   fontSize: 20,
-  fontWeight: "bold"
+  fontFamily: "F1-Bold",
+  marginVertical: 7
 },
 description: {
   color: "dimgray"
