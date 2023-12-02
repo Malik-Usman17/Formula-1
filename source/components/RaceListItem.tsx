@@ -3,6 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, FlatList } from 'react-native';
 import { Entypo } from '@expo/vector-icons';
 import { colors } from "../constants/colors";
 import racesResponse from "../data/races.json"
+import dayjs from 'dayjs';
 
 const races = racesResponse.data.races.response
 
@@ -11,8 +12,14 @@ const RaceListItem = ({ item }: { item: (typeof races)[0] }) => {
     <View style={styles.itemContainer}>
 
       <View style={styles.datesContainer}>
-        <Text style={styles.date}>03-05</Text>
-        <Text style={styles.month}>NOV</Text>
+        
+        <Text style={styles.date}>
+          {dayjs(item.date).subtract(2, 'days').format('DD')} - {dayjs(item.date).format('DD')} 
+        </Text>
+        
+        <Text style={styles.month}>
+          {dayjs(item.date).format("MMM")}
+        </Text>
       </View>
 
       <View style={{ flex: 1 }}>
@@ -23,6 +30,7 @@ const RaceListItem = ({ item }: { item: (typeof races)[0] }) => {
         <Text style={styles.description}>
           Formula 1 {item.competition.location.country} Grand Prix 2023
         </Text>
+        <Text>{item.date}</Text>
       </View>
 
       <Entypo

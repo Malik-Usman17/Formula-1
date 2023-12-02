@@ -2,6 +2,7 @@ import { useFonts } from 'expo-font';
 import { ActivityIndicator, FlatList, SafeAreaView, StyleSheet } from 'react-native';
 import RaceListItem from './source/components/RaceListItem';
 import racesResponse from './source/data/races.json';
+import { StatusBar } from 'expo-status-bar';
 
 const races = racesResponse.data.races.response
 
@@ -24,10 +25,14 @@ export default function App() {
   return (
     <SafeAreaView style={styles.container}>
 
+      <StatusBar />
+
       <FlatList
         data={races}
         renderItem={({ item }) => <RaceListItem item={item} />}
       />
+
+      <StatusBar />
 
     </SafeAreaView>
   );
